@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+    
+    </head>
+    
+<style>
+    
+    
+    .calendar {
+        
+    border : 2px solid red;
+    height : auto; 
+    width : auto; 
+    display : flex;
+    flex-direction : row;
+    justify-content: space-around;
+    
+        
+    }
+    
+    .big {
+        
+    border : 2px solid blue;
+    display : flex; 
+    flex-direction : column; 
+    justify-content: space-around;
+    height : auto;
+    width : 200px;
+        
+    }
+    
+    .days {
+        
+    border : 2px solid green;
+    height : 25px;
+    width : 25px;
+    align-items : center;
+        
+    }
+    
+    
+    #top {
+      
+    display : flex;
+    align-items : center;
+        
+        
+        
+    }
+    
+    
+    #top2 {
+        
+        height : auto; 
+        width : auto; 
+        display : flex;
+        flex-direction : row;
+        
+        
+    }
+    
+    
+    </style>
+
+<body>
+    
+    <div id="top" class="big">
+    calendar 
+    </div>
+    
+    <div id="cal" class="big">
+    <div id="top2" class="calendar"> 
+
+        <div class="days">S</div>
+        <div class="days">M</div>
+        <div class="days">T</div>
+        <div class="days">W</div>
+        <div class="days">T</div>
+        <div class="days">F</div>
+        <div class="days">S</div>
+        
+    </div>
+    
+    
+        
+        
+    
+    </div>
+    
+    <div id="main" class="big">
+    <div class="calendar">
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        </div>
+    <div class="calendar">
+        
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <div class="days"></div>
+        <did class="days"></div>
+        <div class="days"></div>
+        
+     
+        
+        
+    
+    <script>
+    
+    window.onload = function () {
+    const main = document.getElementById("main");
+
+    // Clear previous calendar days (if reloading)
+    main.innerHTML = "";
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+
+    // Get the first day of the month and number of days in month
+    const firstDay = new Date(year, month, 1).getDay(); // 0 (Sun) - 6 (Sat)
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let dayCounter = 1;
+    let started = false;
+
+    // Generate 6 weeks max (rows of 7 days)
+    for (let week = 0; week < 6; week++) {
+      const weekRow = document.createElement("div");
+      weekRow.className = "calendar";
+
+    let rowHasDay = false;
+        
+      for (let day = 0; day < 7; day++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.className = "days";
+
+        const currentCell = week * 7 + day;
+          
+        if (currentCell >= firstDay && dayCounter <= daysInMonth) {
+            dayDiv.textContent = dayCounter;
+            dayCounter++;
+            rowHasDay = true;
+        }
+
+        weekRow.appendChild(dayDiv);
+      }
+
+        if (rowHasDay) {
+            main.appendChild(weekRow);
+        } else {
+            break;
+            
+        }
+
+  }
+    };
+    
+    </script>
+    
+    </body>
+    
+    
+</html>
