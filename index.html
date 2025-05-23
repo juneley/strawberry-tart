@@ -10,14 +10,19 @@
         
         body {
             
-        font-family: 'Georgia', sans-serif;
+        font-family: 'VT323', monospace;
+        font-size: 14px;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        image-rendering: pixelated; 
+        -webkit-font-smoothing: none;
         }
         .bigmain{
             
         display: flex;
         width : 100%;
         height : auto;
-        max-width : 1300px;
+        max-width : 900px;
         flex-direction: column; /* the row containers display vertically*/
         margin: 0 auto;
         
@@ -57,6 +62,58 @@
             
         }
         
+        .pinscol2 {
+            
+            align-self : left; 
+            
+        }
+        
+        .ptitle{
+            
+            font-weight: bold;           
+            background-color: #fca7a7;  
+            border-top : 2px dotted #b06874;
+            border-bottom : 2px dotted #b06874;
+            width: 100%;                 
+            padding: 6px 10px;          
+            box-sizing: border-box;    
+            margin: 0; 
+            
+        }
+        
+        .menuicons{
+            
+            border-top : 2px solid #e87a90;
+            border-left : 2px solid #e87a90;
+            border-right : 1px solid #e87a90;
+            border-bottom : 1px solid #e87a90;
+            font-weight: bold;  
+            height : 10px;
+            width: : 10px;
+            padding : 10px;
+            margin-bottom: 10px;
+            flex: 0 0.5 auto;      
+            overflow: hidden;
+            
+        }
+        
+        #menu4{
+            
+            border : 2px solid #e87a90;
+            display : flex; 
+            flex-grow : 1; 
+            justify-content : space-evenly;
+            flex-wrap: wrap;
+            flex-direction : row; 
+            align-self : center;
+            align-items: center;
+            height : 130px; 
+            width: 90%; 
+            margin-top : 1px;
+            
+            
+        }
+        
         #row1 {
             
             
@@ -67,8 +124,11 @@
         
         .inscol1{
             
-            
-            border : 2px dotted #e87a90;
+           
+            border-top : 2px solid #e87a90;
+            border-left : 2px solid #e87a90;
+            border-right : 1px solid #e87a90;
+            border-bottom : 1px solid #e87a90;
             display : flex; 
             flex-grow : 1; 
             justify-content : space-evenly;
@@ -83,38 +143,83 @@
             
             
             height:auto;
-            width : 190px; 
+            width : 230px; 
             flex-grow : 0; 
             justify-content : center; 
+            
            
         }
         
         #col12 {
             
-            height : 100px;
+            height : 110px;
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: center; 
             
             
             
         }
         
+        
         #col22 {
             
-            height: 230px; 
+            border: none; 
+            height: 400px; 
             overflow:hidden;
+            padding : 0;
         }
         
         #col2 {
             
-            
+            border: 2px dotted #e87a90;
             height: auto;
             width : 500px;
             flex-grow:0; 
             margin-top: 100px; 
             overflow : hidden; 
-            border : none;
+            display:flex;
+            flex-direction : column; 
+            align-items : center; 
+            /*-- background-image: url(https://haydenlovr.neocities.org/images/pinkdots.jpg);*/
+            
+            
             
         }
         
+        #inscol2 {
+            
+            
+            border-image: url(https://haydenlovr.neocities.org/images/whitelace2.png)10 fill round;
+           
+            margin : 5px;
+            display : flex; 
+            width: 95%;
+            flex-direction : column; 
+            align-items : flex-start; 
+            
+            
+        }
+        
+        #menutitle {
+            
+            border-top : 2px solid #e87a90;
+            border-left : 2px solid #e87a90;
+            border-right : 1px solid #e87a90;
+            border-bottom : 1px solid #e87a90;
+            border-radius : 0px; 
+            font-weight: bold;           
+        
+           
+            padding : 5px;
+            margin : 4px;
+            display : flex; 
+            align-self : center; 
+            align-items : center; 
+            white-space : nowrap
+        }
+        
+       
         
         #col3{
             
@@ -159,10 +264,9 @@
         #insrow2{
             
             height : 20px;
-            border : 2px dotted #e87a90;
             width : 100%; 
             overflow:hidden; 
-           
+            
             
             
         }
@@ -190,15 +294,32 @@
         
             <div id="col1" class="insrow">
             
-            <div id="col12" class="inscol1">col1/2</div>
+            <div id="col12" class="inscol1">
+                
+                
+                <iframe src="weather.html" width= "100%" height="100%" scrolling="no" style="border:none;"></iframe>
+                
+                </div>
             <div id="col22" class="inscol1">
                 
                 
                 
-                <fieldset style="padding:0px;border:0;margin:0px;">
-                    <iframe src="https://calendar.sakura.ne.jp/blog_cal.html" scrolling="no" style="background-color:#fbe;padding:0px;border:0;margin:0px;overflow:hidden;width:172px;height:636px;overflow:hidden;">Unsupported browser!</iframe></fieldset>
+               <!-- <fieldset style="padding:0px;border:0;margin:0px;">
+                    <iframe src="https://calendar.sakura.ne.jp/blog_cal.html" scrolling="no" style="background-color:#fbe;padding:0px;border:0;margin:0px;overflow:hidden;width:172px;height:636px;overflow:hidden;">Unsupported browser!</iframe></fieldset> -->
+                <iframe id ="calendar" src="calendar.html" width= "200" height="1200" scrolling="no" style="border:none;"></iframe>
                 
-            
+                <p class="ptitle">menu</p>
+                
+                <div id="menu4" class="menuicons">
+                
+                <div class="menuicons">home</div>
+                <div class="menuicons"><img src="https://64.media.tumblr.com/b60e45a50263829ede2625602a584abd/280f05da42d3b5b8-32/s75x75_c1/2c1698a03460bb5559551e0b09ca9ca69610bd7d.gifv"></div>
+                <div class="menuicons">farts </div>
+                <div class="menuicons">settings</div>
+                
+                </div>
+                
+            navigation or menu here 
                 
                 
                 
@@ -211,16 +332,42 @@
                 
             </div>
             <div id="col2" class="insrow">
-                <img src = "https://haydenlovr.neocities.org/images/randoimg/cuteshoes.jpg" style="height : 450px">
+                <!-- <img src = "https://haydenlovr.neocities.org/images/randoimg/cuteshoes.jpg" style="height : 450px">
+                <img src="https://haydenlovr.neocities.org/images/dividers/lacediv.png" style="height : 50px; width : 395px;">-->
+            <div id="inscol2" class="insrow">
+                
+                <p id="menutitle"> menu </p>
+                
+                <p id="textbimgcol2" class="ptitle">strawberry tart</p>
+                
+                
+                    <p id="textaimgcol2" class="pinscol2">hi there 
+my first ever website 
+
+this is a wip 
+this is test project for something bigger 
+still trying to make it as great as it can be 
+
+you can stick around and see what this website becomes <img src="https://64.media.tumblr.com/fb0f2e961d623aaf077e092e4baa5936/680ef49d95e1b64f-4d/s75x75_c1/7875f15842f8af066fac7274519d0fcff0580e1f.gifv"><img src="https://64.media.tumblr.com/c3e637b9ec60c3c1424aaaf08b3333fa/bbb6fcd205bbed93-28/s75x75_c1/9fe6eb520247651edc8e1f0088c3ea8dfe2cc31b.gifv"><img src="https://64.media.tumblr.com/80fa167d925ba12731c4db73c15e89a8/bbb6fcd205bbed93-c3/s75x75_c1/262cb03873601358906683c8b1ca3887292acf85.gifv"><img src="https://64.media.tumblr.com/c40cc099098f0e58a5fb0f5b50dbdde9/864d1bda21cb5b1a-ea/s75x75_c1/d82e8fdf8108aef84c655daeab8655fc0c22bff9.gifv"></p>
+                <img src="https://64.media.tumblr.com/b1fc29bbe9e43e65fd179765bbf28b94/ec109d733ce4ecbb-7f/s250x400/d2a87bf5ee6d15c06615955b5b2b54aa61a5af37.gifv"style="display: block; margin: 0 auto;width: 300px; height: auto;">
+                    
+                    
+                <p id="textbimgcol2" class="ptitle">strawberry tart</p>    
+                
+                <p id="textaimgcol2" class="pinscol2">strawberry tart</p>
+                <span> you are visitor number :</span>
+                    
+                <div><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-c8YB0B9b3a498xDC-3.gif' border='0' alt='free web counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=c8YB0B9b3a498xDC'></script></div> 
+                
+                </div>  
+                
             </div>
             <div id="col3" class="insrow">
                 <h3 id ="nav"> navigation</h3>
                 <div id="col32"> 
                 
                 <!-- <iframe src="https://my.cbox.ws/junebox" width="100%" height="287" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe> -->
-                <p> you are visitor number :</p>
-                    
-                <div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-c8YB0B9b3a498xDC-3.gif' border='0' alt='free web counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=c8YB0B9b3a498xDC'></script></div>
+                
                 
                 </div>
             </div>
