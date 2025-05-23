@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+    
+    </head>
+        
+    <style>
+    
+    
+        body {
+            
+            font-family: 'VT323', monospace;
+            font-size: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            image-rendering: pixelated; 
+            -webkit-font-smoothing: none;
+            margin: 0;
+            padding: 0;
+           
+        }
+    
+        .textdiv {
+            
+        
+            display : flex;
+            align-self : center; 
+            padding : 2px; 
+            width : auto; 
+            
+            
+        }
+        
+        #main {
+            
+            /*border : 2px solid #e87a90;*/
+            height: inherit;
+            width : auto;
+            display : flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: space-between; 
+            
+            
+        }
+        
+        #below {
+            /*border : 2px solid #e87a90;*/
+            display: flex; 
+            flex-direction: row;
+            justify-content: space-between;
+            width:100%;
+            
+        
+            
+        }
+        
+        .icondiv {
+            
+            /*border : 2px solid #e87a90;*/
+            height : inherit;
+            width: 20px;
+            
+        }
+        
+        
+    
+        #iconwt {
+            /*border : 2px solid #e87a90;*/
+            padding: 5px; 
+            height : 45px;
+            
+            
+        }
+        
+        .icondiv img {
+            
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+
+            
+        }
+        
+        #iconwt img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        
+    </style>  
+        
+        
+    
+    <body>
+    
+    
+    <div id="main" class="big">
+        
+        <div id="above" class="textdiv">location</div>
+        <div id="iconwt"><img src ="https://64.media.tumblr.com/a030d9500e0dac1f324428bb901357a4/ada7dc8ce9ff5191-d8/s75x75_c1/1f88eb654aa7706f789e8c02e8a5cdf292ec7130.gifv"></div>
+        
+        <div id="below">
+            <div class="icondiv"></div>
+        <div id="weather" class="textdiv">data</div>
+            <div class="icondiv"></div>
+            </div>
+        
+        </div>
+    
+    
+    <script>
+        
+        window.onload = function (){
+            
+            
+            
+            
+            
+           
+            
+            const weatherIcons = {
+  sun: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/sun.png" alt="Sun">',
+  cloud: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/cloud.png" alt="Cloud">',
+  rain: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/rain.png" alt="Rain">',
+  thunder: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/thunder.png" alt="Thunder">',
+  moon: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/night.png" alt="Moon">',
+  wind: '<img src="https://haydenlovr.neocities.org/images/weather%20icons/wind.png" alt="Wind">'
+};
+            
+            function getWeather() {
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=25.0343&longitude=-77.3963&current=temperature_2m,weathercode,is_day&timezone=auto")
+    .then(response => response.json())
+    .then(data => {
+      const current = data.current;
+      const temp = current.temperature_2m;
+      const code = current.weathercode;
+      const isDay = current.is_day;
+
+      let condition;
+
+      if ([0, 1].includes(code)) {
+        condition = isDay ? "sun" : "moon";
+      } else if ([2, 3].includes(code)) {
+        condition = "cloud";
+      } else if (code >= 51 && code <= 67) {
+        condition = "rain";
+      } else if (code >= 95 && code <= 99) {
+        condition = "thunder";
+      } else {
+        condition = "wind";
+      }
+
+      // Display results
+      document.getElementById("iconwt").innerHTML = weatherIcons[condition];
+      document.getElementById("weather").textContent = `${temp}°C`;
+      
+      const icons = document.getElementsByClassName("icondiv");
+      for (let i = 0; i < icons.length; i++) {
+          icons[i].innerHTML = weatherIcons[condition];
+      }
+    
+      document.getElementById("above").textContent = "Bahamas"; // this only gives out weather for the bahamas because im lazy but maybe someday it'll be customizable...
+    })
+    .catch(err => console.error("API Error:", err));
+}
+            getWeather ();
+            
+
+
+        
+            
+        }
+        
+        
+        </script>
+    
+    
+    </body>
+    
+</html>

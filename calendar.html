@@ -8,39 +8,85 @@
     
 <style>
     
+    body{
+        font-family: 'VT323', monospace;
+        font-size: 16px;
+        line-height: 1.2;
+        image-rendering: pixelated; 
+        -webkit-font-smoothing: none;
+        margin: 0;
+        padding: 0;
+    }
     
+    .marquee {
+        
+
+        overflow:hidden; 
+        white-space: nowrap;
+        display: inline-block;
+        animation: scroll-left 5s linear infinite;
+    }
+    
+    @keyframes scroll-left {
+        
+        0% {
+            transform: translateX(150%);
+        }
+        100% {
+            transform: translate(-150%);
+        }
+        
+    }
     .calendar {
         
-    border : 2px solid red;
+    border : 2px transparent;
     height : auto; 
     width : auto; 
     display : flex;
     flex-direction : row;
     justify-content: space-around;
     
+    
         
     }
     
     .big {
         
-    border : 2px solid blue;
+    /*border : 2px solid blue;*/
     display : flex; 
     flex-direction : column; 
     justify-content: space-around;
     height : auto;
-    width : 200px;
+    width : 170px;
+    margin-bottom: 2px;
+    
         
     }
     
     .days {
         
-    border : 2px solid green;
+    border-top : 2px solid green;
+    border-left : 2px solid green;
+    border-right : 1px solid green;
+    border-bottom : 1px solid green;
     height : 25px;
     width : 25px;
     align-items : center;
+    margin-bottom: 1px;
+    margin-right:1px;
         
     }
     
+    #aroundcal {
+    margin-bottom : 3px;
+    border-top : 2px solid blue;
+    border-left : 2px solid blue;
+    border-right : 1px solid blue;
+    border-bottom : 1px solid blue;
+    width : 166px ;
+    overflow : hidden;
+        
+    }
     
     #top {
       
@@ -68,7 +114,10 @@
 <body>
     
     <div id="top" class="big">
-    calendar 
+        <div id="aroundcal" class="big" >
+    <div id ="calendar-title" class ="marquee"> Loading...</div>
+        </div>
+    
     </div>
     
     <div id="cal" class="big">
@@ -117,14 +166,30 @@
     <script>
     
     window.onload = function () {
+        
+        
+    
+        
     const main = document.getElementById("main");
 
     // Clear previous calendar days (if reloading)
+    
     main.innerHTML = "";
 
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth();
+        
+    
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        
+    ];
+        
+    const title = document.getElementById("calendar-title");
+    title.textContent = `❤ ${monthNames[month]} ${year} ❤`;
+        
+    
 
     // Get the first day of the month and number of days in month
     const firstDay = new Date(year, month, 1).getDay(); // 0 (Sun) - 6 (Sat)
